@@ -6,8 +6,7 @@ import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import PrivateRouteHOC from "./Components/Authentication/PrivateRouteHOC";
 import DashBoard from "./Components/Screens/Dashboard";
 import LandingPage from "./Components/Screens/LandingPage";
-import TrainBooking from "./Components/Screens/TrainBooking";
-
+import BookingHistory from "./Components/Screens/BookingHistory";
 
 function App() {
   return (
@@ -15,10 +14,10 @@ function App() {
       <AuthProvider>
         <TrainProvider>
             <Switch>
-              <PrivateRouteHOC exact path="/dashboard" component={DashBoard}/>
+              <PrivateRouteHOC exact path="/" component={DashBoard}/>
+              <PrivateRouteHOC path='/search' component={LandingPage}/>
+              <Route path='/bookinghistory' component={BookingHistory}/>
               {/* Auth Routes */}
-              <Route path='/trainbooking' component={TrainBooking}/>
-              <Route path='/' component={LandingPage}/>
               <Route path="/signup" component={SignUp}/>
               <Route path="/login" component={Login}/>
             </Switch>

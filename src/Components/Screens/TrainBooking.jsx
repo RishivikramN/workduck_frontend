@@ -10,15 +10,25 @@ export default function TrainBooking() {
     const [trains,setTrains] = useState([]);
     const [show,setShow] = useState(false);
     const [bookShow,setBookShow] = useState(false);
+    const [activeItem,setActiveItem] = useState([]);
+    const [activeTrainId,setActiveTrainId] = useState();
+    const [scheduleActiveItem,setScheduleActiveItem] = useState([]);
 
     useEffect(()=>{
         setTrains(state.trains);
     },[]);
 
-    const handleModalShow = () => setShow(true);
+    const handleModalShow = (scheduleitem) => {
+        setShow(true);
+        setScheduleActiveItem(scheduleitem);
+    }
     const handleModalClose = () => setShow(false);
 
-    const handleBookModalShow = () => setBookShow(true);
+    const handleBookModalShow = (trainseats,trainid) => {
+        setBookShow(true);
+        setActiveItem(trainseats);
+        setActiveTrainId(trainid);
+    };
     const handleBookModalClose = () =>{ 
         setBookShow(false);
     };
@@ -27,7 +37,6 @@ export default function TrainBooking() {
         <div>
             {
                 trains.map(train=>(
-                    <>
                     <Card key={train._id} className="ml-5 mt-3" style={{ width: '50rem' }}>
                         <Card.Header className="d-flex"><h4>{train.TrainCode} {train.TrainName}</h4> <div className="mr-auto"/> 
                             <strong className="mr-2">Runs On: </strong>
@@ -41,53 +50,44 @@ export default function TrainBooking() {
                                     <strong>To: </strong><p className="mr-2">{state.to} | {new Date(train.TrainStations[train.TrainStations.length-1].ArrivalTime).toLocaleDateString()} | { new Date(train.TrainStations[train.TrainStations.length-1].ArrivalTime).toTimeString().substr(0,5)}</p>
                                 </div>
                             </ListGroupItem>
-                            <ListGroupItem>
-                                <div className="d-flex mt-2">
-                                    <strong className="ml-2">Tickets Available: </strong>
-                                    <p className="ml-2">{train.Seats.filter( seat => !seat.IsBooked).length} 
-                                    </p>
-                                    <div className="mr-auto"/>
-                                </div>
-                            </ListGroupItem>
                         </ListGroup>
                         <Card.Body>
                             <div className="d-flex">
-                                <Button onClick={handleBookModalShow} disabled = {train.Seats.filter( seat => !seat.IsBooked).length <= 0}
+                                <Button onClick={()=>handleBookModalShow(train.Seats,train._id)} disabled = {train.Seats.filter( seat => !seat.IsBooked).length <= 0}
                                 >Book Now</Button>
                                 <div className="mr-auto"/>
-                                <Button onClick={handleModalShow}>View Schedule</Button>
+                                <Button onClick={()=>handleModalShow(train.TrainStations)}>View Schedule</Button>
                             </div>
                         </Card.Body>
                     </Card>    
-                    <Modal show={bookShow} onHide={handleBookModalClose} size="lg">
+                ))   
+            }     
+            <Modal show={bookShow} onHide={handleBookModalClose} size="lg">
                         <Modal.Header closeButton>
                         <Modal.Title>Book your Seats</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                            <SeatsTable seats={train.Seats}/>
+                            <SeatsTable seats={activeItem} trainId={activeTrainId}/>
                         </Modal.Body>
                         <Modal.Footer>
                             <Button variant="secondary" onClick={handleBookModalClose}>
                                 Close
                             </Button>
                         </Modal.Footer>
-                    </Modal>    
-                    <Modal show={show} onHide={handleModalClose} size="lg">
+            </Modal>       
+            <Modal show={show} onHide={handleModalClose} size="lg">
                         <Modal.Header closeButton>
                         <Modal.Title>Train Schedule</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                            <ScheduleTable schedules={train.TrainStations}/>
+                            <ScheduleTable schedules={scheduleActiveItem}/>
                         </Modal.Body>
                         <Modal.Footer>
                             <Button variant="secondary" onClick={handleModalClose}>
                                 Close
                             </Button>
                         </Modal.Footer>
-                    </Modal>
-                    </>
-                ))
-            }            
+            </Modal> 
         </div>
     )
 }

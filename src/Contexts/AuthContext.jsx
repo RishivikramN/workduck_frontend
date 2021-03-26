@@ -29,7 +29,7 @@ export function AuthProvider({children}){
             password
         }
         const result = await axios.post(signinEndpoint, JSONPayload);
-        setCurrentUser({emailId:email,userName:result.data.username});
+        setCurrentUser({emailId:email,userName:result.data.username, userId: result.data.userId});
 
         setToken(result.data.token.toString());
         localStorage.setItem("authtoken",token);

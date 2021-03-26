@@ -1,21 +1,26 @@
 import React,{useEffect, useRef} from 'react';
 import {Table,FormCheck} from "react-bootstrap";
+import { useAuth } from '../../Contexts/AuthContext';
 import { useTrain } from '../../Contexts/TrainContext';
 
-export default function SeatsTable({seats}) {
+export default function SeatsTable({seats,trainId}) {
     let bookedseats = [];
     const checkref = useRef();
     const {bookSeats} = useTrain();
+    const {currentUser} = useAuth();
 
     useEffect(()=>{
-        return ()=>{
+        return async ()=>{
+            
             bookedseats.forEach((bookedseat)=>{
                 seats.forEach((seat)=>{
                     if(seat._id == bookedseat._id)
                         seat.IsBooked = true;
                 });
             });
-            bookSeats(bookedseats);
+            
+            if(bookedseats.length > 0)
+                await bookSeats(bookedseats,trainId,currentUser);
         }
     },[]);
     

@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import axios from "axios";
-import { trainRoutesEndpoint, getTrainEndpoint } from "../Config/Endpoints";
+import { trainRoutesEndpoint, getTrainEndpoint, bookSeatTrainEndpoint, bookingHistoryTrainEndpoint } from "../Config/Endpoints";
+import { useAuth } from './AuthContext';
 
 const TrainContext = React.createContext();
 
@@ -9,12 +10,14 @@ export function useTrain(){
 }
 
 export function TrainProvider({children}){
+    const {token,currentUser} = useAuth();
     let state = {
         to:"",
         from:"",
         date:"",
         trains: [],
-        seats:[]
+        seats:[],
+        bookinghistory: []
     }
 
     const getTrainRoutes = async () => {
@@ -22,9 +25,25 @@ export function TrainProvider({children}){
         return response.data;
     }
 
-    const bookSeats = (seats) => {
+    const bookSeats = async (seats,trainId,user) => {
+        const payload = {
+            BookedSeatIds: seats,
+            TrainId: trainId,
+            UserId: user.userId,
+            BookingDate: state.date
+        };
         state.seats = seats;
-        console.log(state.seats);
+        const response = await axios.post(bookSeatTrainEndpoint, payload,{headers:{
+            'x-auth-token' : token
+        }});
+    }
+
+    const getBookingHistory = async () => {
+        console.log(currentUser);
+        const response = await axios.get(`${bookingHistoryTrainEndpoint}/${currentUser.userId}`,{headers:{
+            'x-auth-token' : token
+        }});
+        state.bookinghistory = response.data;
     }
 
     const getTrains = async (from,to,date)=>{
@@ -40,6 +59,7 @@ export function TrainProvider({children}){
         getTrainRoutes,
         getTrains,
         bookSeats,
+        getBookingHistory,
         state
     }
     return(

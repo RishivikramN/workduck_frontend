@@ -2,6 +2,7 @@ import React,{useRef,useState} from 'react'
 import {Alert,Form,Card,Button} from "react-bootstrap"
 import { Link, useHistory } from 'react-router-dom';
 import {useAuth} from "../../Contexts/AuthContext"
+import { useTrain } from '../../Contexts/TrainContext';
 import CenteredContainer from "./CenteredContainer";
 var validator = require("email-validator");
 
@@ -15,6 +16,7 @@ export default function SignUp() {
     const [validation,setValidation] = useState({email:"",password:""});
 
     const {login} = useAuth();
+    const {getBookingHistory} = useTrain();
 
     //handlers
     const handleSubmit = async (e)=>{
@@ -28,7 +30,7 @@ export default function SignUp() {
             setLoading(true);
             setError("");
             await login(email, password);    
-            history.push("/");
+            history.push("/search");
         }
         catch(ex){
             

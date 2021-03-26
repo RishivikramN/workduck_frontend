@@ -2,6 +2,7 @@ import React,{useEffect} from 'react'
 import {Navbar as BootStrapNavBar,Nav} from "react-bootstrap"
 import { Link,useHistory } from 'react-router-dom'
 import {useAuth} from "../../Contexts/AuthContext"
+import BookingHistory from './BookingHistory';
 
 
 export default function NavBar() {
@@ -20,7 +21,7 @@ export default function NavBar() {
     }
 
     return (
-        <BootStrapNavBar bg="primary" variant="dark" expand="sm">
+        <BootStrapNavBar bg="primary" variant="dark" expand="sm" sticky="top">
             <BootStrapNavBar.Brand as={Link} to="/">
                 <div className="text-light">
                 Train Reservation System
@@ -30,15 +31,17 @@ export default function NavBar() {
             <BootStrapNavBar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto"/>
                 <Nav>
+                    <Nav.Link className="active" as={Link} to="/search">
+                        Train Search
+                    </Nav.Link>
+                    <Nav.Link className="active" as={Link} to="/bookinghistory">
+                        Booking History
+                    </Nav.Link>
                     <Nav.Link as={Link} to="#">
-                        <div className="text-light">
-                            <strong>Hello! {currentUser && currentUser.userName} </strong>
-                        </div>
+                        Username: {currentUser && currentUser.userName}
                     </Nav.Link>
                     <Nav.Link as={Link} to="#" onClick={handleLogout}>
-                        <div className="text-light">
-                            <strong>LogOut</strong>
-                        </div>
+                        LogOut
                     </Nav.Link>
                 </Nav>
             </BootStrapNavBar.Collapse>  

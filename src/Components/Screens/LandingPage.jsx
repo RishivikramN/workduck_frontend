@@ -8,7 +8,7 @@ export default function LandingPage() {
     const fromRef = useRef();
     const toRef = useRef();
     const dateRef = useRef();
-    const { getTrainRoutes, getTrains, state } = useTrain();
+    const { getTrainRoutes, getTrains, state, getBookingHistory } = useTrain();
     const [stations,setStations] = useState([]);
     const [loading,setLoading] = useState(false);
     const history = useHistory();
@@ -25,8 +25,9 @@ export default function LandingPage() {
         e.preventDefault();
         setLoading(true);
         await getTrains(fromRef.current.value,toRef.current.value,dateRef.current.value);
+        console.log(state.bookinghistory);
         setLoading(false);
-        history.push('/trainbooking');
+        history.push('/');
     };
 
     return (
