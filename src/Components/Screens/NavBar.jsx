@@ -38,10 +38,14 @@ export default function NavBar() {
                         Booking History
                     </Nav.Link>
                     <Nav.Link as={Link} to="#">
-                        Username: {currentUser && currentUser.userName}
+                        <div className="text-light">
+                            Username: {currentUser && currentUser.userName}
+                        </div>
                     </Nav.Link>
                     <Nav.Link as={Link} to="#" onClick={handleLogout}>
-                        LogOut
+                        <div className="text-light">
+                            LogOut
+                        </div>
                     </Nav.Link>
                 </Nav>
             </BootStrapNavBar.Collapse>  
