@@ -21,11 +21,11 @@ export function TrainProvider({children}){
         return response.data;
     }
 
-    const getTrains = async (to,from,date)=>{
+    const getTrains = async (from,to,date)=>{
         state.to = to;
         state.from = from;
         state.date = date;
-        const computedEndpoint = `${getTrainEndpoint}/${to}-${from}-${date}`;
+        const computedEndpoint = `${getTrainEndpoint}/${from}-${to}-${date}`;
         const response = await axios.get(computedEndpoint);
         state.trains = response.data;
     };
