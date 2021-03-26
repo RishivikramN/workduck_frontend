@@ -45,9 +45,9 @@ export default function TrainBooking() {
                         <ListGroup className="list-group-flush">
                             <ListGroupItem>
                                 <div className="d-flex mt-2">
-                                    <strong className="ml-2">From: </strong><p>{state.from} | {new Date(train.TrainStations[0].ArrivalTime).toLocaleDateString()} | {new Date(train.TrainStations[0].ArrivalTime).toTimeString().substr(0,5)}</p>
+                                    <strong className="ml-2">From: </strong><p>{state.from} | {new Date(train.TrainStations[0].ArrivalTime).toTimeString().substr(0,5)}       |   {new Date(state.date).toLocaleDateString()}</p>
                                     <div className="mr-auto"/>
-                                    <strong>To: </strong><p className="mr-2">{state.to} | {new Date(train.TrainStations[train.TrainStations.length-1].ArrivalTime).toLocaleDateString()} | { new Date(train.TrainStations[train.TrainStations.length-1].ArrivalTime).toTimeString().substr(0,5)}</p>
+                                    <strong>To: </strong><p className="mr-2">{state.to} | { new Date(train.TrainStations[train.TrainStations.length-1].ArrivalTime).toTimeString().substr(0,5)}</p>
                                 </div>
                             </ListGroupItem>
                         </ListGroup>
