@@ -25,7 +25,6 @@ export default function LandingPage() {
         e.preventDefault();
         setLoading(true);
         await getTrains(fromRef.current.value,toRef.current.value,dateRef.current.value);
-        console.log(state.bookinghistory);
         setLoading(false);
         history.push('/');
     };

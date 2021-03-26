@@ -39,7 +39,6 @@ export function TrainProvider({children}){
     }
 
     const getBookingHistory = async () => {
-        console.log(currentUser);
         const response = await axios.get(`${bookingHistoryTrainEndpoint}/${currentUser.userId}`,{headers:{
             'x-auth-token' : token
         }});
