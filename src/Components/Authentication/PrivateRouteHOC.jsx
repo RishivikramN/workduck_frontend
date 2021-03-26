@@ -7,7 +7,7 @@ export default function PrivateRouteHOC({component:Component , ...restprops}){
         <Route
         {...restprops}
         render={
-            props=> { return currentUser ? <Component {...props}/> : <Redirect to="/login"/>}
+            props=> { return currentUser ? <Component {...props}/> : <Redirect to="/"/>}
         }
         >
 
