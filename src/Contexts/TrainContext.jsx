@@ -13,12 +13,18 @@ export function TrainProvider({children}){
         to:"",
         from:"",
         date:"",
-        trains: []
+        trains: [],
+        seats:[]
     }
 
     const getTrainRoutes = async () => {
         const response = await axios.get(trainRoutesEndpoint);
         return response.data;
+    }
+
+    const bookSeats = (seats) => {
+        state.seats = seats;
+        console.log(state.seats);
     }
 
     const getTrains = async (from,to,date)=>{
@@ -33,6 +39,7 @@ export function TrainProvider({children}){
     const value={
         getTrainRoutes,
         getTrains,
+        bookSeats,
         state
     }
     return(
