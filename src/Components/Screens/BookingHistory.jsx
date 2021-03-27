@@ -25,12 +25,16 @@ export default function BookingHistory() {
             {   isLoading ?
                 <div style={{marginLeft:"750px",marginTop:"300px"}} class="spinner-border text-primary" role="status"/>
                 :
+                bookingHistory.length > 0 ?
                 bookingHistory.map(
                     history=>history.Seats.map(
                                 seat=>
                                     <BookingHistoryTable histories={history} seats={seat}/>
                                 )
                 )
+                : 
+                    <h6 className="mt-5 text-center">Nothing to show here</h6>
+                  
             }
         </>
     )

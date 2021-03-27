@@ -36,6 +36,7 @@ export default function TrainBooking() {
     return (
         <div>
             {
+                trains.length > 0 ?
                 trains.map(train=>(
                     <Card key={train._id} className="ml-5 mt-3" style={{ width: '50rem' }}>
                         <Card.Header className="d-flex"><h4>{train.TrainCode} {train.TrainName}</h4> <div className="mr-auto"/> 
@@ -60,8 +61,9 @@ export default function TrainBooking() {
                             </div>
                         </Card.Body>
                     </Card>    
-                ))   
-            }     
+                ))   :
+                <h4 className="mt-5 text-center">No Trains were found for your criteria</h4>
+            } 
             <Modal show={bookShow} onHide={handleBookModalClose} size="lg">
                         <Modal.Header closeButton>
                         <Modal.Title>Book your Seats</Modal.Title>

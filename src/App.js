@@ -7,6 +7,8 @@ import PrivateRouteHOC from "./Components/Authentication/PrivateRouteHOC";
 import DashBoard from "./Components/Screens/Dashboard";
 import LandingPage from "./Components/Screens/LandingPage";
 import BookingHistory from "./Components/Screens/BookingHistory";
+import TrainLiveStatus from "./Components/Screens/TrainLiveStatus";
+import TrainLiveStatusDisplay from "./Components/Screens/TrainLiveStatusDisplay";
 
 function App() {
   return (
@@ -16,7 +18,9 @@ function App() {
             <Switch>
               <PrivateRouteHOC exact path="/" component={DashBoard}/>
               <PrivateRouteHOC path='/search' component={LandingPage}/>
-              <Route path='/bookinghistory' component={BookingHistory}/>
+              <PrivateRouteHOC path='/bookinghistory' component={BookingHistory}/>
+              <PrivateRouteHOC path='/livestatus' component={TrainLiveStatus}/>
+              <PrivateRouteHOC path='/livestatusdisplay' component={TrainLiveStatusDisplay}/>
               {/* Auth Routes */}
               <Route path="/signup" component={SignUp}/>
               <Route path="/login" component={Login}/>
