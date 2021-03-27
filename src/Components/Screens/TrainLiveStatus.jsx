@@ -36,7 +36,7 @@ export default function TrainLiveStatus() {
             <CenteredContainer>
                 <Card>
                     <Card.Body>
-                        <h2 className="text-center mb-4">Live status</h2>
+                        <h2 className="text-center mb-4">Live status of the searched trains</h2>
                         <Form onSubmit={handleSubmit}>
                             <Form.Group id="status">
                                 <Form.Label>Select a train</Form.Label>
