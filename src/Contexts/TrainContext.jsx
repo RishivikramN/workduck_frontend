@@ -1,6 +1,9 @@
 import React, { useContext, useState } from 'react';
 import axios from "axios";
-import { trainRoutesEndpoint, getTrainEndpoint, bookSeatTrainEndpoint, bookingHistoryTrainEndpoint, liveStatusTrainEndpoint } from "../Config/Endpoints";
+import { trainRoutesEndpoint, getTrainEndpoint
+         , bookSeatTrainEndpoint, bookingHistoryTrainEndpoint
+         , liveStatusTrainEndpoint, trainTrafficTrainEndpoint }
+         from "../Config/Endpoints";
 import { useAuth } from './AuthContext';
 
 const TrainContext = React.createContext();
@@ -18,12 +21,15 @@ export function TrainProvider({children}){
         trains: [],
         seats:[],
         bookinghistory: [],
-        livestatus: {}
+        trainroutes: [],
+        livestatus: {},
+        traintraffic: []
     }
 
     const getTrainRoutes = async () => {
         try {
             const response = await axios.get(trainRoutesEndpoint);
+            state.trainroutes = response.data;
             return response.data;   
         } catch (error) {
             console.log(error);
@@ -81,12 +87,24 @@ export function TrainProvider({children}){
         }
     }
 
+    const getTrainTraffic = async (stationId, fromTime, toTime) => {
+        try {
+            const computedEndpoint = `${trainTrafficTrainEndpoint}/${stationId}-${fromTime}-${toTime}`;
+            const response = await axios.get(computedEndpoint);
+            state.traintraffic = response.data;
+            console.log(response.data);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     const value={
         getTrainRoutes,
         getTrains,
         bookSeats,
         getBookingHistory,
         getLiveTrainStatus,
+        getTrainTraffic,
         state
     }
     return(

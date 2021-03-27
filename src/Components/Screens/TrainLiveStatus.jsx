@@ -1,5 +1,4 @@
 import React,{useEffect, useState} from 'react'
-import NavBar from './NavBar'
 import {Form,Button,Col,Card} from "react-bootstrap"
 import { useTrain } from '../../Contexts/TrainContext';
 import { Link, useHistory } from 'react-router-dom';

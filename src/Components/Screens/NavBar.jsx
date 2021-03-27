@@ -40,6 +40,9 @@ export default function NavBar() {
                     <Nav.Link className="active" as={Link} to="/livestatus">
                         Live Train Status
                     </Nav.Link>
+                    <Nav.Link className="active" as={Link} to="/traintraffic">
+                        Train Traffic
+                    </Nav.Link>
                     <Nav.Link as={Link} to="#">
                         <div className="text-light">
                             Username: {currentUser && currentUser.userName}

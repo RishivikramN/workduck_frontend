@@ -1,21 +1,15 @@
-import React,{useEffect, useState} from 'react'
-import { Card } from 'react-bootstrap';
+import React from 'react'
+import { Card, Container } from 'react-bootstrap';
 import { useTrain } from '../../Contexts/TrainContext';
 import NavBar from './NavBar'
 
 export default function TrainLiveStatusDisplay() {
-    const [livestatus,setLiveStatus] = useState();
-
     const {state} = useTrain();
-
-    useEffect(()=>{
-        setLiveStatus(state.livestatus);
-        console.log(livestatus);
-    },[]);
 
     return (
         <div>
             <NavBar/>
+            <h3 className="ml-5 mt-5">Live Status of the searched trains</h3>
                 {
                 state.livestatus.Message.length > 0 ?
                     <h6 className="text-center mt-5">{state.livestatus.Message}</h6>

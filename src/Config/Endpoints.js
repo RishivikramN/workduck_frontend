@@ -10,3 +10,4 @@ export const getTrainEndpoint = `${config.host}/api/trains/`;
 export const bookSeatTrainEndpoint = `${config.host}/api/trains/bookseat`;
 export const bookingHistoryTrainEndpoint = `${config.host}/api/trains/getbookinghistory`;
 export const liveStatusTrainEndpoint = `${config.host}/api/trains/livestatus`;
+export const trainTrafficTrainEndpoint = `${config.host}/api/trains/traintraffic`;

@@ -9,6 +9,8 @@ import LandingPage from "./Components/Screens/LandingPage";
 import BookingHistory from "./Components/Screens/BookingHistory";
 import TrainLiveStatus from "./Components/Screens/TrainLiveStatus";
 import TrainLiveStatusDisplay from "./Components/Screens/TrainLiveStatusDisplay";
+import TrainTraffic from "./Components/Screens/TrainTraffic";
+import TrainTrafficDisplay from "./Components/Screens/TrainTrafficDisplay";
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
               <PrivateRouteHOC path='/bookinghistory' component={BookingHistory}/>
               <PrivateRouteHOC path='/livestatus' component={TrainLiveStatus}/>
               <PrivateRouteHOC path='/livestatusdisplay' component={TrainLiveStatusDisplay}/>
+              <PrivateRouteHOC path='/traintraffic' component={TrainTraffic}/>
+              <PrivateRouteHOC path='/traintrafficdisplay' component={TrainTrafficDisplay}/>
               {/* Auth Routes */}
               <Route path="/signup" component={SignUp}/>
               <Route path="/login" component={Login}/>
