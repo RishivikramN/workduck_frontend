@@ -70,3 +70,8 @@ Once you have entered the train and click on get status. you will be seeing the 
 
 ![image](https://user-images.githubusercontent.com/20830832/112756646-c6d3c100-9003-11eb-814c-39393e199e08.png)
 
+If you are an admin you can see the train traffic in a particular station. 
+
+![image](https://user-images.githubusercontent.com/20830832/112757361-326b5d80-9007-11eb-9847-6138b320e804.png)
+
+![image](https://user-images.githubusercontent.com/20830832/112757383-444d0080-9007-11eb-9baf-6417aa5ab770.png)
