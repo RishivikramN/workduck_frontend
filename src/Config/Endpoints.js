@@ -6,7 +6,7 @@ export const signinEndpoint = `${config.host}/api/users/signinuser`;
 
 //Train Endpoints
 export const trainRoutesEndpoint = `${config.host}/api/trainroutes/`;
-export const getTrainEndpoint = `${config.host}/api/trains/`;
+export const getTrainEndpoint = `${config.host}/api/trains`;
 export const bookSeatTrainEndpoint = `${config.host}/api/trains/bookseat`;
 export const bookingHistoryTrainEndpoint = `${config.host}/api/trains/getbookinghistory`;
 export const liveStatusTrainEndpoint = `${config.host}/api/trains/livestatus`;

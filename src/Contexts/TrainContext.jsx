@@ -28,7 +28,9 @@ export function TrainProvider({children}){
 
     const getTrainRoutes = async () => {
         try {
-            const response = await axios.get(trainRoutesEndpoint);
+            const response = await axios.get(trainRoutesEndpoint,{headers:{
+                'x-auth-token' : token
+            }});
             state.trainroutes = response.data;
             return response.data;   
         } catch (error) {
@@ -70,7 +72,9 @@ export function TrainProvider({children}){
             state.from = from;
             state.date = date;
             const computedEndpoint = `${getTrainEndpoint}/${from}-${to}-${date}`;
-            const response = await axios.get(computedEndpoint);
+            const response = await axios.get(computedEndpoint,{headers:{
+                'x-auth-token' : token
+            }});
             state.trains = response.data;   
         } catch (error) {
             console.log(error);
@@ -79,7 +83,9 @@ export function TrainProvider({children}){
 
     const getLiveTrainStatus = async (trainId) => {
         try {
-            const response = await axios.get(`${liveStatusTrainEndpoint}/${trainId}`);
+            const response = await axios.get(`${liveStatusTrainEndpoint}/${trainId}`,{headers:{
+                'x-auth-token' : token
+            }});
             state.livestatus = response.data;
             console.log(state.livestatus);
         } catch (error) {
@@ -90,7 +96,9 @@ export function TrainProvider({children}){
     const getTrainTraffic = async (stationId, fromTime, toTime) => {
         try {
             const computedEndpoint = `${trainTrafficTrainEndpoint}/${stationId}-${fromTime}-${toTime}`;
-            const response = await axios.get(computedEndpoint);
+            const response = await axios.get(computedEndpoint,{headers:{
+                'x-auth-token' : token
+            }});
             state.traintraffic = response.data;
             console.log(response.data);
         } catch (error) {

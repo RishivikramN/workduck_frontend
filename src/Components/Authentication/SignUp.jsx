@@ -1,11 +1,12 @@
 import React,{useRef,useState} from 'react'
-import {Alert,Form,Card,Button} from "react-bootstrap"
+import {Alert,Form,Card,Button, FormCheck} from "react-bootstrap"
 import { Link , useHistory} from 'react-router-dom';
 import {useAuth} from "../../Contexts/AuthContext"
 import CenteredContainer from "./CenteredContainer";
 var validator = require("email-validator");
 
 export default function SignUp() {
+    const isAdminRef = useRef();
     const usernameRef = useRef();
     const emailRef = useRef();
     const passwordRef = useRef();
@@ -25,11 +26,12 @@ export default function SignUp() {
         let username = usernameRef.current.value;
         let email = emailRef.current.value;
         let password = passwordRef.current.value;
-        
+        let isAdmin = isAdminRef.current.value;
+
         try {
             setLoading(true);
             setError("");
-            await signUp(username, email, password);    
+            await signUp(username, email, password,isAdmin == "on" ? true : false);    
             history.push("/login");
 
         } catch (ex) {
@@ -75,6 +77,12 @@ export default function SignUp() {
                         <Form.Group id="password">
                             <Form.Label>Password</Form.Label>
                             <Form.Control type="password" ref={passwordRef} onChange={handleOnChange} required/>
+                        </Form.Group>
+                        <Form.Group id="admin">
+                            <div className="d-flex">
+                                <FormCheck ref={isAdminRef}/>
+                                <Form.Label>Are you an Admin?</Form.Label>
+                            </div>
                         </Form.Group>
                         {validation.password && <Alert variant="danger">{validation.password}</Alert>}
                         <Button type="submit" className="w-100 text-center mt-2" disabled={loading}>{loading ? 

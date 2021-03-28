@@ -12,15 +12,15 @@ export function AuthProvider({children}){
     const [currentUser,setCurrentUser] = useState();
     const [token, setToken] = useState("");
 
-    const signUp = async (username,email,password) => {
+    const signUp = async (username,email,password,isAdmin) => {
         const JSONPayload = {
             userName: username,
             emailId : email,
-            password
+            password,
+            isAdmin 
         }
-            const response = await axios.post(signupEndpoint, JSONPayload);
-            
-            setCurrentUser(response.data);
+        const response = await axios.post(signupEndpoint, JSONPayload);
+        setCurrentUser(response.data);
     }
 
     const login = async ( email, password) =>{
@@ -29,8 +29,8 @@ export function AuthProvider({children}){
             password
         }
         const result = await axios.post(signinEndpoint, JSONPayload);
-        setCurrentUser({emailId:email,userName:result.data.username, userId: result.data.userId});
-
+        setCurrentUser({emailId:email,userName:result.data.username, userId: result.data.userId, isAdmin: result.data.isAdmin});
+        
         setToken(result.data.token.toString());
         localStorage.setItem("authtoken",token);
     }

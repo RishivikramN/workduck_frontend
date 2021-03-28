@@ -21,7 +21,7 @@ export default function TrainLiveStatusDisplay() {
                             <h5>Moving From:</h5>
                             <h6 className="ml-3 mt-1">{state.livestatus.from}</h6>
                             <div className="mr-auto"/> 
-                            <h5>To</h5>
+                            <h5>To:</h5>
                             <h6 className="ml-3 mt-1" >{state.livestatus.to}</h6>
                         </Card.Header>     
                     </Card>    

@@ -40,14 +40,26 @@ export default function NavBar() {
                     <Nav.Link className="active" as={Link} to="/livestatus">
                         Live Train Status
                     </Nav.Link>
-                    <Nav.Link className="active" as={Link} to="/traintraffic">
-                        Train Traffic
-                    </Nav.Link>
+                    {
+                        currentUser.isAdmin ?
+                        <Nav.Link className="active" as={Link} to="/traintraffic">
+                            Train Traffic
+                        </Nav.Link> 
+                        : null
+                    }
                     <Nav.Link as={Link} to="#">
                         <div className="text-light">
                             Username: {currentUser && currentUser.userName}
                         </div>
                     </Nav.Link>
+                    {
+                        currentUser.isAdmin ? 
+                        <Nav.Link className="active" as={Link} to="#">
+                            Access: Admin 
+                        </Nav.Link> 
+                        :
+                        null
+                    }
                     <Nav.Link as={Link} to="#" onClick={handleLogout}>
                         <div className="text-light">
                             LogOut
