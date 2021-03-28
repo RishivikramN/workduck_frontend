@@ -52,12 +52,24 @@ export default function TrainBooking() {
                                 </div>
                             </ListGroupItem>
                         </ListGroup>
+                        <ListGroup className="list-group-flush">
+                            <ListGroupItem>
+                                <div className="d-flex mt-2">
+                                    <strong>Status:</strong>
+                                    {
+                                        train.isOnDelay ?
+                                        <p className="ml-3" style={{color:"red"}}>Delayed</p>:
+                                        <p className="ml-3" style={{color:"green"}}>On Time</p>
+                                    }
+                                </div>
+                            </ListGroupItem>
+                        </ListGroup>
                         <Card.Body>
                             <div className="d-flex">
                                 <Button onClick={()=>handleBookModalShow(train.Seats,train._id)} disabled = {train.Seats.filter( seat => !seat.IsBooked).length <= 0}
                                 >Book Now</Button>
                                 <div className="mr-auto"/>
-                                <Button onClick={()=>handleModalShow(train.TrainStations)}>View Schedule</Button>
+                                <Button variant="outline-primary" onClick={()=>handleModalShow(train.TrainStations)}>View Schedule</Button>
                             </div>
                         </Card.Body>
                     </Card>    
