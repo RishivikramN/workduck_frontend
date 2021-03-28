@@ -1,4 +1,7 @@
 # Guide
+
+Deployed URL : https://workduck-frontend.web.app/login
+
 ## Disclaimer
    
 > The backend is hosted in heroku free tier.
