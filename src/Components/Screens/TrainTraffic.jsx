@@ -4,6 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 import CenteredContainer from '../Authentication/CenteredContainer';
 import { useTrain } from '../../Contexts/TrainContext';
 import {parseTime} from '../../Utils/DateUtils';
+import NavBar from './NavBar';
 
 export default function TrainTraffic() {
     const fromTimeRef = useRef();
@@ -35,6 +36,7 @@ export default function TrainTraffic() {
 
     return (
         <div>
+            <NavBar/>
             <CenteredContainer>
                 <Card>
                     <Card.Body>

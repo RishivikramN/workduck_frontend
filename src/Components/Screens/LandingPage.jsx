@@ -3,6 +3,7 @@ import {Alert,Form,Card,Button} from "react-bootstrap"
 import { Link, useHistory } from 'react-router-dom';
 import {useTrain} from "../../Contexts/TrainContext"
 import CenteredContainer from "../Authentication/CenteredContainer";
+import NavBar from './NavBar';
 
 export default function LandingPage() {
     const fromRef = useRef();
@@ -49,6 +50,7 @@ export default function LandingPage() {
 
     return (
         <div>
+            <NavBar/>
             <CenteredContainer>
                 <Card>
                     <Card.Body>

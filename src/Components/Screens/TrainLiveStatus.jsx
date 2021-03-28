@@ -1,8 +1,9 @@
 import React,{useEffect, useState} from 'react'
-import {Form,Button,Col,Card} from "react-bootstrap"
+import {Form,Button,Col,Card,Alert} from "react-bootstrap"
 import { useTrain } from '../../Contexts/TrainContext';
 import { Link, useHistory } from 'react-router-dom';
 import CenteredContainer from '../Authentication/CenteredContainer';
+import NavBar from './NavBar';
 
 export default function TrainLiveStatus() {
     const [trains,setTrains] = useState([]);
@@ -32,10 +33,12 @@ export default function TrainLiveStatus() {
 
     return (
         <div>
+            <NavBar/>
             <CenteredContainer>
                 <Card>
                     <Card.Body>
                         <h2 className="text-center mb-4">Live status of the searched trains</h2>
+                        {trains.length == 0 && <Alert variant="danger">Please search the trains in Train Search to use this feature</Alert>}
                         <Form onSubmit={handleSubmit}>
                             <Form.Group id="status">
                                 <Form.Label>Select a train</Form.Label>
