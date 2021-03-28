@@ -8,6 +8,10 @@ import { useAuth } from './AuthContext';
 
 const TrainContext = React.createContext();
 
+//useTrain is a custom hook that handles
+// all the inter state management between
+// the components.
+// Note: Implemented a hybrid state management system. (Experimental but works great)
 export function useTrain(){
     return useContext(TrainContext);
 }

@@ -5,7 +5,9 @@ import {useTrain} from "../../Contexts/TrainContext"
 import CenteredContainer from "../Authentication/CenteredContainer";
 import NavBar from './NavBar';
 
-export default function LandingPage() {
+//TrainSearch component shows the trains that are avaliable based on
+// station and time
+export default function TrainSearch() {
     const fromRef = useRef();
     const toRef = useRef();
     const dateRef = useRef();

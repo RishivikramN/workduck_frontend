@@ -4,7 +4,8 @@ import { Link,useHistory } from 'react-router-dom'
 import {useAuth} from "../../Contexts/AuthContext"
 import BookingHistory from './BookingHistory';
 
-
+//Navbar component displays the navigation bar on the 
+// header of the webpage
 export default function NavBar() {
     const history = useHistory();
 

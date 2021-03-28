@@ -6,6 +6,7 @@ import { useTrain } from '../../Contexts/TrainContext';
 import CenteredContainer from "./CenteredContainer";
 var validator = require("email-validator");
 
+// Login Component
 export default function SignUp() {
     const emailRef = useRef();
     const passwordRef = useRef();

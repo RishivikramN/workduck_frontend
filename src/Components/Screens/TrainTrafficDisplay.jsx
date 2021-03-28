@@ -3,6 +3,8 @@ import NavBar from './NavBar'
 import { Card } from 'react-bootstrap';
 import { useTrain } from '../../Contexts/TrainContext';
 
+// TrainTrafficDisplay component displays the results from
+// the TrainTraffic component.
 export default function TrainTrafficDisplay() {
     const {state} = useTrain();
 

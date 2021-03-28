@@ -4,6 +4,8 @@ import { signupEndpoint, signinEndpoint } from "../Config/Endpoints";
 
 const AuthContext = React.createContext();
 
+// useAuth is a Custom Hook that handles 
+// all the authentication processes.
 export function useAuth(){
     return useContext(AuthContext);
 }

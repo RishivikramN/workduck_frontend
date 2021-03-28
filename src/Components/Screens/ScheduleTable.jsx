@@ -1,6 +1,7 @@
 import React from 'react';
 import {Table} from "react-bootstrap";
 
+// ScheduleTable component displays the train's schedule
 export default function ScheduleTable({schedules}) {
     return (
         <>

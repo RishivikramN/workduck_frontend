@@ -3,6 +3,8 @@ import { Card, Container } from 'react-bootstrap';
 import { useTrain } from '../../Contexts/TrainContext';
 import NavBar from './NavBar'
 
+// TrainLiveStatus component displays the live position
+// of the train at current server time.
 export default function TrainLiveStatusDisplay() {
     const {state} = useTrain();
 

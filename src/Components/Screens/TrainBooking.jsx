@@ -5,6 +5,8 @@ import ScheduleTable from './ScheduleTable';
 import SeatsTable from './SeatsTable';
 import WeekDayContainer from "./WeekDayContainer";
 
+// TrainBooking shows the search results from the 
+// train search component.
 export default function TrainBooking() {
     const {state} = useTrain();
     const [trains,setTrains] = useState([]);

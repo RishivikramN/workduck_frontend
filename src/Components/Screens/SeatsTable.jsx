@@ -3,6 +3,8 @@ import {Table,FormCheck} from "react-bootstrap";
 import { useAuth } from '../../Contexts/AuthContext';
 import { useTrain } from '../../Contexts/TrainContext';
 
+// SeatsTable component allows the user to book the
+// seats in the available trains.
 export default function SeatsTable({seats,trainId}) {
     let bookedseats = [];
     const checkref = useRef();

@@ -1,6 +1,7 @@
 import React from 'react'
 import {Container, Table} from "react-bootstrap";
 
+//BookingHistoryTable component is a display UI Component
 export default function BookingHistoryTable({histories,seats}) {
     return (
         <Container>

@@ -5,6 +5,7 @@ import NavBar from './NavBar'
 import TrainBooking from './TrainBooking';
 import BookingHistory from './BookingHistory';
 
+// Parent Component that holds train search results page
 export default function DashBoard() {
     const {currentUser} = useAuth();
 

@@ -1,3 +1,4 @@
+//Parses the numeric date into date object
 export function parseTime( input ) {
     var date = new Date();
     var time = input.match( /(\d+)(?::(\d\d))?\s*(p?)/ );

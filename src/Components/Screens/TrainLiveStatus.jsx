@@ -5,6 +5,8 @@ import { Link, useHistory } from 'react-router-dom';
 import CenteredContainer from '../Authentication/CenteredContainer';
 import NavBar from './NavBar';
 
+//TrainLiveStatus components receives the input from 
+// the user and shows the live position of the trains.
 export default function TrainLiveStatus() {
     const [trains,setTrains] = useState([]);
     const [loading,setLoading] = useState(false);

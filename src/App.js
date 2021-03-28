@@ -5,7 +5,7 @@ import Login from "./Components/Authentication/Login";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import PrivateRouteHOC from "./Components/Authentication/PrivateRouteHOC";
 import DashBoard from "./Components/Screens/Dashboard";
-import LandingPage from "./Components/Screens/LandingPage";
+import TrainSearch from "./Components/Screens/TrainSearch";
 import BookingHistory from "./Components/Screens/BookingHistory";
 import TrainLiveStatus from "./Components/Screens/TrainLiveStatus";
 import TrainLiveStatusDisplay from "./Components/Screens/TrainLiveStatusDisplay";
@@ -18,8 +18,9 @@ function App() {
       <AuthProvider>
         <TrainProvider>
             <Switch>
+              {/*Private Routes for the components */}
               <PrivateRouteHOC exact path="/" component={DashBoard}/>
-              <PrivateRouteHOC path='/search' component={LandingPage}/>
+              <PrivateRouteHOC path='/search' component={TrainSearch}/>
               <PrivateRouteHOC path='/bookinghistory' component={BookingHistory}/>
               <PrivateRouteHOC path='/livestatus' component={TrainLiveStatus}/>
               <PrivateRouteHOC path='/livestatusdisplay' component={TrainLiveStatusDisplay}/>

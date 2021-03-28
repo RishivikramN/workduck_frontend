@@ -6,6 +6,9 @@ import { useTrain } from '../../Contexts/TrainContext';
 import {parseTime} from '../../Utils/DateUtils';
 import NavBar from './NavBar';
 
+// TrainTraffic component receives the input 
+// from the admin and displays the traffic at 
+// the given station.
 export default function TrainTraffic() {
     const fromTimeRef = useRef();
     const toTimeRef = useRef();

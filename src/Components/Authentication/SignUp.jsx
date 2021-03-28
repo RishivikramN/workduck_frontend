@@ -5,6 +5,7 @@ import {useAuth} from "../../Contexts/AuthContext"
 import CenteredContainer from "./CenteredContainer";
 var validator = require("email-validator");
 
+//Sign Up component
 export default function SignUp() {
     const isAdminRef = useRef();
     const usernameRef = useRef();

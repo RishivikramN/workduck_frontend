@@ -4,6 +4,8 @@ import { useTrain } from '../../Contexts/TrainContext';
 import BookingHistoryTable from './BookingHistoryTable';
 import NavBar from './NavBar'
 
+// Booking History component shows the logs 
+// of seats booked by the users.
 export default function BookingHistory() {
     const [bookingHistory,setBookingHistory] = useState([]);
     const {state,getBookingHistory} = useTrain();
