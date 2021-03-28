@@ -24,6 +24,16 @@ export default function TrainLiveStatusDisplay() {
                             <h5>To:</h5>
                             <h6 className="ml-3 mt-1" >{state.livestatus.to}</h6>
                         </Card.Header>     
+                        <Card.Body>
+                            <div className="d-flex mt-2">
+                                    <strong>Status:</strong>
+                                    {
+                                        state.livestatus.delay ?
+                                        <p className="ml-3" style={{color:"red"}}>Delayed</p>:
+                                        <p className="ml-3" style={{color:"green"}}>On Time</p>
+                                    }
+                                </div>
+                        </Card.Body>
                     </Card>    
                     :<Card className="ml-5 mt-3" style={{ width: '50rem' }}>
                         <Card.Header className="d-flex">
